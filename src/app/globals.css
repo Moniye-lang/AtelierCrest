@@ -1,26 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-charcoal: #050505;
+  --color-white: #FFFFFF;
+  --color-gold: #C5A03A;
+  --color-gold-hover: #D8B75B;
+  --color-beige: #FAF9F6; /* Crisp warm silk white */
+  --color-border: #E8E5DD; /* Hairline silk gray border */
+  --color-text-main: #050505;
+  --color-text-muted: #444440;
+  --color-emerald: #0A532C;
+  --color-softred: #A52A2A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark-theme {
+  --color-charcoal: #FFFFFF;
+  --color-white: #0A0A0A;
+  --color-gold: #E5C365;
+  --color-gold-hover: #F2D57E;
+  --color-beige: #121211;
+  --color-border: #2D2C28; /* Softer dark hairline border */
+  --color-text-main: #FFFFFF;
+  --color-text-muted: #B8B8B2;
+  --color-emerald: #1BA85C;
+  --color-softred: #EF4444;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-luxury-charcoal: var(--color-charcoal);
+  --color-luxury-white: var(--color-white);
+  --color-luxury-gold: var(--color-gold);
+  --color-luxury-gold-hover: var(--color-gold-hover);
+  --color-luxury-beige: var(--color-beige);
+  --color-luxury-lightgray: var(--color-border);
+  --color-luxury-medgray: var(--color-text-muted);
+  --color-luxury-emerald: var(--color-emerald);
+  --color-luxury-softred: var(--color-softred);
+  
+  --font-serif: "Cinzel", "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  
+  --animate-fade-in: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-down: slide-down 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-left: slide-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-down {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slide-left {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-white);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-charcoal);
+}
+
+/* Base settings */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-text-main);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Typographic Overrides */
+.serif-heading {
+  font-family: "Cinzel", serif;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.gold-accent-text {
+  color: var(--color-gold);
+  background: linear-gradient(135deg, var(--color-gold-hover) 0%, var(--color-gold) 50%, #9E7D1C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Solid Hairline Divider */
+.border-hairline {
+  border: 0.5px solid var(--color-border);
+}
+
+.divide-hairline > * + * {
+  border-top: 0.5px solid var(--color-border);
+}
+
+/* Dynamic Zoom */
+.zoom-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.zoom-image {
+  transition: transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zoom-container:hover .zoom-image {
+  transform: scale(1.05);
+}
+
+/* Modern Avant-Garde Buttons */
+.btn-couture {
+  position: relative;
+  overflow: hidden;
+  border: 0.5px solid var(--color-border);
+  background-color: transparent;
+  color: var(--color-text-main);
+  padding: 1.2rem 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-couture::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: var(--color-charcoal);
+  transform: translateY(101%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn-couture:hover {
+  color: var(--color-white);
+  border-color: var(--color-charcoal);
+  letter-spacing: 0.35em;
+}
+
+.btn-couture:hover::before {
+  transform: translateY(0);
+}
+
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+  border: 0.5px solid var(--color-gold);
+  background-color: var(--color-gold);
+  color: #FFFFFF;
+  padding: 1.2rem 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: var(--color-charcoal);
+  transform: translateY(101%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn-gold:hover {
+  color: var(--color-white);
+  border-color: var(--color-charcoal);
+  letter-spacing: 0.35em;
+}
+
+.btn-gold:hover::before {
+  transform: translateY(0);
+}
+
+/* Minimalist Card Lift */
+.card-couture {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-couture:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-gold);
+}
+
+/* Infinite Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 35s linear infinite;
+}
+
+/* Custom Accessibility Size Override Classes (Legible Sizes) */
+.text-\[8px\], .text-\[9px\], .text-\[10px\], .text-\[11px\], .text-xs {
+  font-size: 0.8rem !important;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.text-sm {
+  font-size: 0.95rem !important;
+  line-height: 1.7;
+}
+
+.text-base {
+  font-size: 1.1rem !important;
+  line-height: 1.8;
+}
+
+.text-lg {
+  font-size: 1.25rem !important;
+}
+
+.text-xl {
+  font-size: 1.5rem !important;
+}
+
+.text-2xl {
+  font-size: 2rem !important;
+}
+
+.text-3xl {
+  font-size: 2.75rem !important;
+}
+
+.text-4xl {
+  font-size: 3.5rem !important;
+}
+
+.text-5xl {
+  font-size: 4.5rem !important;
+}
+
+.text-6xl {
+  font-size: 6rem !important;
+}
+
+/* Brutalist Bold Layout Elements */
+.brutalist-block {
+  border: 0.5px solid var(--color-border);
+  background-color: var(--color-white);
+  padding: 2rem;
+  transition: all 0.4s ease;
+}
+
+.brutalist-block-beige {
+  border: 0.5px solid var(--color-border);
+  background-color: var(--color-beige);
+  padding: 2rem;
+  transition: all 0.4s ease;
 }
