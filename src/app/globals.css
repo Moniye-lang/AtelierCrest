@@ -45,6 +45,7 @@
   --animate-slide-up: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-slide-down: slide-down 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-slide-left: slide-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-right: slide-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fade-in {
@@ -64,6 +65,11 @@
 
 @keyframes slide-left {
   from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-right {
+  from { transform: translateX(-100%); }
   to { transform: translateX(0); }
 }
 

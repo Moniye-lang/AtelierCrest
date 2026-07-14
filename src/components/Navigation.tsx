@@ -418,7 +418,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, activePage }
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-luxury-charcoal/80 backdrop-blur-sm animate-fade-in flex justify-start">
-          <div className="w-full max-w-xs bg-luxury-white shadow-2xl p-8 flex flex-col justify-between animate-slide-left [animation-direction:reverse] rounded-none border-r border-hairline">
+          <div className="w-full max-w-xs bg-luxury-white shadow-2xl p-8 flex flex-col justify-between animate-slide-right rounded-none border-r border-hairline">
             <div>
               <div className="flex items-center justify-between mb-12">
                 <span className="text-[11px] font-bold tracking-[0.3em] serif-heading text-luxury-gold">MENU</span>
